@@ -1,9 +1,14 @@
 # Isolir Tanpa WebProxy Menggunakan L2TP
 **TOPOLOGI**
+
 Ip PPPoE 10.10.10.2-10.10.10.254
+
 Ip Isolir 20.30.40.2-20.30.40.254
+
 Ip lokal L2TP server Isolir 192.168.42.1
+
 Ip Public Isolir 103.192.174.163
+
 
 
 
