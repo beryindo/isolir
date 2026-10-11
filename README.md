@@ -90,9 +90,35 @@ server {
         }
 }
 ```
+UBAH return subdomain kamu
+```
+nano /etc//etc/nginx/sites-available/default
+```
+> return 302 https://isolir.subdomainkamu.com/;
+
 ```
 sudo ln -s /etc/nginx/sites-available/isolir.domainkamu.com /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d isolir.domainkamu.com
+```
+
+
+**UBAH IPsec**
+```
+nano /etc/ipsec.secrets
+```
+ganti 12345678 dengan IPsec yang anda inginkan
+
+
+**Menambahkan uservpn baru**
+```
+cd /root
+bash add_vpn_user.sh 'username' 'password'
+```
+
+**login ssh**
+```
+root
+12345678
 ```
