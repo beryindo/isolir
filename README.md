@@ -1,16 +1,13 @@
 # Isolir Tanpa WebProxy Menggunakan L2TP
-TOPOLOGI
-
+**TOPOLOGI**
 Ip PPPoE 10.10.10.2-10.10.10.254
-
 Ip Isolir 20.30.40.2-20.30.40.254
-
 Ip lokal L2TP server Isolir 192.168.42.1
-
 Ip Public Isolir 103.192.174.163
 
 
 
+**MIKROTIK**
 ```
 /ip ipsec proposal
 set [ find default=yes ] auth-algorithms=sha256,sha1 enc-algorithms=\
@@ -53,4 +50,44 @@ add name=soreang001 password=12345678 profile=20Mbps_Soreang service=pppoe
 set time-zone-name=Asia/Jakarta
 /system ntp client
 set enabled=yes primary-ntp=202.162.32.12 secondary-ntp=185.125.190.58
+```
+
+**Rubah ip public di**
+
+```
+nano /etc/dnsmasq.conf
+```
+> listen-address=103.192.174.163
+> 
+> address=/#/103.192.174.163
+
+**buat subdomain arahkan ke ip public misal: isolir.domainkamu.com**
+
+
+**Setting nginx**
+```
+mkdir /var/www/html/isolir.domainkamu.com
+sudo chown -R $USER:$USER /var/www/isolir.domainkamu.com/html
+sudo chmod -R 755 /var/www/isolir.jkbtel.com
+nano /etc/nginx/sites-available/isolir.domainkamu.com
+```
+
+```
+server {
+
+        root /var/www/isolir.domainkamu.com/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name isolir.domainkamu.com www.isolir.domainkamu.com;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+```
+```
+sudo ln -s /etc/nginx/sites-available/isolir.domainkamu.com /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d isolir.domainkamu.com
 ```
