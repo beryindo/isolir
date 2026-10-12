@@ -7,7 +7,7 @@ Ip Isolir 20.30.40.2-20.30.40.254
 
 Ip lokal L2TP server Isolir 192.168.42.1
 
-Ip Public Isolir 103.192.174.163
+Ip Public Isolir 103.xxx.xxx.xxx
 
 
 
@@ -32,7 +32,7 @@ set servers=8.8.8.8,8.8.4.4
 add address=20.30.40.2-20.30.40.254 comment="IP LOKAL ISOLIR" list=ISOLIR
 /ip firewall filter
 add action=accept chain=forward comment="ISOLIR - ALLOW PORTAL HTTPS" \
-    dst-address=103.192.174.163 dst-port=443 protocol=tcp src-address-list=\
+    dst-address=103.xxx.xxx.xxx dst-port=443 protocol=tcp src-address-list=\
     ISOLIR
 add action=drop chain=forward comment="ISOLIR - BLOCK INTERNET" \
     out-interface=ether1 src-address-list=ISOLIR
@@ -62,9 +62,9 @@ set enabled=yes primary-ntp=202.162.32.12 secondary-ntp=185.125.190.58
 ```
 nano /etc/dnsmasq.conf
 ```
-> listen-address=103.192.174.163
+> listen-address=103.xxx.xxx.xxx
 > 
-> address=/#/103.192.174.163
+> address=/#/103.xxx.xxx.xxx
 
 **buat subdomain arahkan ke ip public misal: isolir.domainkamu.com**
 
