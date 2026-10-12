@@ -122,3 +122,9 @@ bash add_vpn_user.sh 'username' 'password'
 root
 12345678
 ```
+
+
+**Download Server Isolir lengkap dengan Nginx, L2TP dan DNSMasq**
+```
+https://drive.google.com/file/d/13hk34fFyPxSAgnlXf1BQQZFiWd6zCze2/view?usp=sharing
+```
