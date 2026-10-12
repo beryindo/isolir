@@ -128,3 +128,5 @@ root
 ```
 https://drive.google.com/file/d/13hk34fFyPxSAgnlXf1BQQZFiWd6zCze2/view?usp=sharing
 ```
+
+> NOTE: untuk ROS7 disesuaikan saja ya
